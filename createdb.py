@@ -64,6 +64,23 @@ tables = {
             venue VARCHAR(100),
             FOREIGN KEY (area_id) REFERENCES areas(id)
         );
+    """,
+    "matches": """
+        CREATE TABLE IF NOT EXISTS matches (
+            id INT PRIMARY KEY,
+            competition_id INT,
+            season VARCHAR(10), 
+            matchday INT,
+            home_team_id INT,
+            away_team_id INT,
+            home_score INT,
+            away_score INT,
+            status VARCHAR(20),
+            FOREIGN KEY (competition_id) REFERENCES competitions(id),
+            FOREIGN KEY (home_team_id) REFERENCES teams(id),
+            FOREIGN KEY (away_team_id) REFERENCES teams(id),
+            utc_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
     """
 }
 
